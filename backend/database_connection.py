@@ -68,7 +68,7 @@ class DatabaseConnection:
             cursor = self.__db.cursor()
 
             # insert sql query
-            sql = f"SELECT timestamp, price FROM '{TABLE_NAME}';"            
+            sql = f"SELECT timestamp, price FROM '{TABLE_NAME}';"
 
             # execute sql query
             cursor.execute(sql)
