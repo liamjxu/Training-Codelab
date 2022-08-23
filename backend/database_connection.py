@@ -32,15 +32,20 @@ class DatabaseConnection:
             return False
 
         try:
-            # TODO (5.3.2)  
+            # TODO (5.3.2)
             # insert sql query
+            sql = ("INSERT INTO Customers (timestamp, price) \n"
+                   f"VALUES ({bitcoin.timestamp}, {bitcoin.price});"
+                   )
 
             # execute sql query
+            cursor.execute(sql)
 
             # commit to db
+            self.__db.commit()
 
             # close
-
+            cursor.close()
             return True
         except Exception as exception:
             print(exception)
