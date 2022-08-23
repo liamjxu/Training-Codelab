@@ -37,6 +37,12 @@ async def root():
 """
 repeated task to update bitcoin prices periodically
 """
+@repeat_every(seconds=15)
+def update_price():
+    price = get_live_bitcoin_price()
+    current_time = convert_date_to_text(datetime.now())
+    conn.insert_timestamp(BitcoinTimestamp(current_time, price))
+
 
 
 # TODO (5.4.3)
