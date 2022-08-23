@@ -27,8 +27,8 @@ class DatabaseConnection:
         try:
             # get cursor
             cursor = self.__db.cursor()
-        except Error as e:
-            print(e)
+        except Error as error_message:
+            print(error_message)
             return False
 
         try:
@@ -42,10 +42,10 @@ class DatabaseConnection:
             # close
 
             return True
-        except Exception as e:
-            print(e)
+        except Exception as exception:
+            print(exception)
             return False
-      
+
     def get_all_timestampes(self):
         """
         gets all bitcoin timestamps in the database
@@ -57,24 +57,29 @@ class DatabaseConnection:
         """
         try:
             output = []
-            
+
             # TODO (5.3.1)
             # get cursor
-            
-            
+            cursor = self.__db.cursor()
+
             # insert sql query
-             
+            sql = f"SELECT 'timestamp' FROM '{TABLE_NAME}';"            
 
             # execute sql query
-           
+            cursor.execute(sql)
 
             # fetch all results obtained
-            
+            results = cursor.fetchall()
+
             # close
+            cursor.close()
 
             # convert results to BitcoinTimestamp objects and append to output
+            for _ in results:
+                output.append(BitcoinTimestamp(*_))
 
             return output
-        except Error as e:
-            print(e)
+
+        except Error as error_message:
+            print(error_message)
             return []
