@@ -54,6 +54,11 @@ API endpoint to get bitcoin prices
 :rtype:
     json
 """
+@app.get('/get_bitcoin_prices')
+async def get_bitcoin_price():
+    data = conn.get_all_timestampes()
+    content = [_.__dict__ for _ in data]
+    return json.dumps(content)
 
 
 # main function to run the server
