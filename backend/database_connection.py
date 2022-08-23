@@ -34,8 +34,8 @@ class DatabaseConnection:
         try:
             # TODO (5.3.2)
             # insert sql query
-            sql = ("INSERT INTO Customers (timestamp, price) \n"
-                   f"VALUES ({bitcoin.timestamp}, {bitcoin.price});"
+            sql = ("INSERT INTO Bitcoin (timestamp, price) \n"
+                   f"VALUES ('{bitcoin.timestamp}', {bitcoin.price});"
                    )
 
             # execute sql query
@@ -68,7 +68,7 @@ class DatabaseConnection:
             cursor = self.__db.cursor()
 
             # insert sql query
-            sql = f"SELECT 'timestamp' FROM '{TABLE_NAME}';"            
+            sql = f"SELECT timestamp, price FROM '{TABLE_NAME}';"            
 
             # execute sql query
             cursor.execute(sql)
@@ -88,3 +88,14 @@ class DatabaseConnection:
         except Error as error_message:
             print(error_message)
             return []
+
+
+if __name__ == "__main__":
+    conn = DatabaseConnection()
+    
+    # # 5.3.1 test
+    # print([(_.timestamp, _.price) for _ in conn.get_all_timestampes()])
+
+    # # 5.3.2 test
+    # time_stamp = BitcoinTimestamp('test', 42)
+    # conn.insert_timestamp(time_stamp)

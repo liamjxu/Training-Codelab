@@ -37,12 +37,14 @@ async def root():
 """
 repeated task to update bitcoin prices periodically
 """
+@app.on_event("startup")
 @repeat_every(seconds=15)
-def update_price():
-    price = get_live_bitcoin_price()
+async def update_bitcoin_price():
+    current_price = get_live_bitcoin_price()
+    if current_price == -1:
+        return
     current_time = convert_date_to_text(datetime.now())
-    conn.insert_timestamp(BitcoinTimestamp(current_time, price))
-
+    conn.insert_timestamp(BitcoinTimestamp(current_time, current_price))
 
 
 # TODO (5.4.3)
