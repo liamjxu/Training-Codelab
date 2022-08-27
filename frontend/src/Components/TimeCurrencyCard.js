@@ -76,7 +76,7 @@ function TimeCurrencyCard ({currency,showData}) {
                 <div className={priceColor(index)}>
                     {d.price}
                     {d.timestamp}
-                    {currency === 'USD' ? "$" : "￥"}
+                    {currency === 'USD' ? "$" : "¥"}
                     {arrowSign(index)}
                 </div>
             ))} 
