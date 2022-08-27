@@ -1,5 +1,9 @@
 .bodyContainer{
     background-color: #13294b;
+    padding:25px;
+    border:40px;
+    height: 100vh;
+
 }
 
 .bodyContainerMargin{

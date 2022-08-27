@@ -35,7 +35,7 @@ function Home () {
     setTimeout refrence https://developer.mozilla.org/en-US/docs/Web/API/setTimeout
   */
   useEffect(() =>{
-    setTimeout(() => {updateData()}, 15000);
+    setTimeout(() => {updateData()}, 5 * 60 * 1000);
   },[data])
 
   // ToDo 10.3.3
@@ -55,8 +55,12 @@ function Home () {
   */
   useEffect(() =>{
     let currShowData = data;
-    if (currency !== "USD"){currShowData = currShowData.map(el => ({...el, price:parseFloat((el.price*6.7).toFixed(4))}));}
-    currShowData.sort((a,b)=> {return(new Date(b.timestamp) - new Date(a.timestamp))});
+    if (currency !== "USD"){
+      currShowData = currShowData.map(el => ({...el, price:parseFloat((el.price*6.7).toFixed(4))}));
+    } else {
+      currShowData = currShowData.map(el => ({...el, price:parseFloat((el.price).toFixed(4))}));
+    }
+    currShowData = currShowData.slice(-5)
     setShownData(currShowData);
   },[currency,data])
 
@@ -77,10 +81,9 @@ function Home () {
   // call CurrencyButton and TimeCurrencyCard pass the variables
   return (
     <div className={styles.bodyContainer}>
-      {/* {currency} */}
       <CurrencyButton currency={currency} changeCurrency={changeCurrency}/>
       <TimeCurrencyCard currency={currency} showData={shownData}/>
-    </div>
+    </div>  
   );
 
 }

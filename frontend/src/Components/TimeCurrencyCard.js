@@ -48,13 +48,13 @@ function TimeCurrencyCard ({currency,showData}) {
         string
     */
     const arrowSign = (index) => {
-        if (index === 0){return '-'}
+        if (index === 0){return '='}
         if (showData[index]["price"] > showData[index-1]["price"]){
             return "↑";
         } else if (showData[index]["price"] < showData[index-1]["price"]){
             return "↓";
         } else {
-            return '-';
+            return '=';
         }
     }
     
@@ -74,10 +74,15 @@ function TimeCurrencyCard ({currency,showData}) {
         <div className={styles.cardContainer}>
             {showData.map((d, index) => (
                 <div className={priceColor(index)}>
-                    {d.price}
-                    {d.timestamp}
-                    {currency === 'USD' ? "$" : "¥"}
-                    {arrowSign(index)}
+                    <p>
+                        {d.timestamp}
+                        {"\t"}
+                        {arrowSign(index)}
+                        {"\t"}
+                        {d.price}
+                        {"\t"}
+                        {currency === 'USD' ? "$" : "¥"}
+                    </p>
                 </div>
             ))} 
         </div>     

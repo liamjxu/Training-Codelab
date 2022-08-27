@@ -1,16 +1,25 @@
 .cardContainer {
-    width: 200px;
-    height: 200px;
     background-color: orange;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    font-family: arial;
+    font-size: 24px;
+    /* width: 200px; */
+    /* height: 200px; */
+    /* display: flex; */
+    /* justify-content: center; */
+    /* align-items: center; */
+    /* outline: dashed 1px black; */
+    margin: 25px;
+    padding: 25px;
+}
+
+p{
+    text-align: center;
 }
 
 .priceContainerUp {
     font-size: 16px;
-    /* background-color: #1d1d1d; */
     color: green;
+    /* background-color: #1d1d1d; */
     /* border-radius: 8px;
     padding: 8px;
     border: 0; */
@@ -18,8 +27,8 @@
 
 .priceContainerDown {
     font-size: 16px;
-    /* background-color: #1d1d1d; */
     color: red;
+    /* background-color: #1d1d1d; */
     /* border-radius: 8px;
     padding: 8px;
     border: 0; */
@@ -27,8 +36,8 @@
 
 .priceContainerEqual {
     font-size: 16px;
-    /* background-color: #1d1d1d; */
     color: white;
+    /* background-color: #1d1d1d; */
     /* border-radius: 8px;
     padding: 8px;
     border: 0; */
