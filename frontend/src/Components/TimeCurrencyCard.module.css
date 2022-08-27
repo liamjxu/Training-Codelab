@@ -1,13 +1,38 @@
 .cardContainer {
+    width: 200px;
+    height: 200px;
+    background-color: orange;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .priceContainerUp {
+    font-size: 16px;
+    /* background-color: #1d1d1d; */
+    color: green;
+    /* border-radius: 8px;
+    padding: 8px;
+    border: 0; */
 }
 
 .priceContainerDown {
+    font-size: 16px;
+    /* background-color: #1d1d1d; */
+    color: red;
+    /* border-radius: 8px;
+    padding: 8px;
+    border: 0; */
 }
 
 .priceContainerEqual {
+    font-size: 16px;
+    /* background-color: #1d1d1d; */
+    color: white;
+    /* border-radius: 8px;
+    padding: 8px;
+    border: 0; */
+    
 }
 
 .timeContainer {
